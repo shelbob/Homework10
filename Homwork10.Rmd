@@ -1,0 +1,25 @@
+---
+title: "Homework 10"
+author: "Shelby Nechkash, Seana, Greg"
+date: "2023-04-23"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+1. Load accident data and plot latitude and longitude on a map
+
+2. Are there some days of the week where more accidents happen than on others (use variable DAY_WEEK)?
+
+3.What time of the day do accidents happen (use variable HOUR)?
+
+4.What is the number of accidents with at least one drunk driver (use variable DRUNK_DR)?
+
+5.Connect to the person table. Identify drivers (PER_TYP == 1, see fars manual ) and subset on them.
+
+6.Join accident and driver table (work out which variable(s) to use)
+
+7.Tally the number of accidents by day of the week (DAY_WEEK), hour of the day (HOUR) and gender (SEX). Visualize the results!
+

@@ -11,11 +11,37 @@ knitr::opts_chunk$set(echo = TRUE)
 
 1. Load accident data and plot latitude and longitude on a map
 
+```{r}
+library(tidyverse)
+accidentdata = Crash_Data
+ggplot(accidentdata, aes(x=LONGITUD, y=LATITUDE)) + geom_point()
+#need to adjust where the axis starts
+```
+
+
 2. Are there some days of the week where more accidents happen than on others (use variable DAY_WEEK)?
+
+```{r}
+accidentdata %>% group_by(DAY_WEEK) 
+#need to finish to count
+```
+
 
 3.What time of the day do accidents happen (use variable HOUR)?
 
+
+```{r}
+accidentdata %>% group_by(HOUR)
+#Need to add a count
+```
+
 4.What is the number of accidents with at least one drunk driver (use variable DRUNK_DR)?
+
+```{r}
+accidentdata %>% filter(DRUNK_DR >=1)
+#need to add count
+```
+
 
 5.Connect to the person table. Identify drivers (PER_TYP == 1, see fars manual ) and subset on them.
 

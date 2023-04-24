@@ -13,9 +13,13 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r}
 library(tidyverse)
+library(maps)
 accidentdata = Crash_Data
 ggplot(accidentdata, aes(x=LONGITUD, y=LATITUDE)) + geom_point()
-#need to adjust where the axis starts
+
+states %>% ggplot(aes(x=long, y=lat)) + geom_path(aes(group=group)) + geom_point(aes(x=LONGITUD, y=LATITUDE), size=0.05, color='red', data=acc %>% filter(LONGITUDE<0, LLONGUDE>-180))
+
+#ggplot(map(aes(x=long, y=lat))) + geom_polygon(aes(group=group))  + Geom_point(accidentdata, aes(x=LONGITUD, y=LATITUDE))
 ```
 
 

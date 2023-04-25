@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(tidyverse)
 library(maps)
-accidentdata = Crash_Data
+accidentdata = read_csv("accident data.csv");
 ggplot(accidentdata, aes(x=LONGITUD, y=LATITUDE)) + geom_point()
 
 states %>% ggplot(aes(x=long, y=lat)) + geom_path(aes(group=group)) + geom_point(aes(x=LONGITUD, y=LATITUDE), size=0.05, color='red', data=acc %>% filter(LONGITUDE<0, LLONGUDE>-180))
@@ -24,19 +24,23 @@ states %>% ggplot(aes(x=long, y=lat)) + geom_path(aes(group=group)) + geom_point
 
 
 2. Are there some days of the week where more accidents happen than on others (use variable DAY_WEEK)?
+- Most accidents occur on Friday, Saturday, and Sunday
 
 ```{r}
 accidentdata %>% group_by(DAY_WEEK) 
 #need to finish to count
+accidentdata %>% group_by(DAY_WEEK) %>% mutate(DAY_WEEK = wday(DAY_WEEK, label=TRUE)) %>% summarise(n = n())
 ```
 
 
 3.What time of the day do accidents happen (use variable HOUR)?
+most acccidents occur between 17:00 and 20:00 hours.
 
-
-```{r}
+```{r, warning=FALSE}
 accidentdata %>% group_by(HOUR)
 #Need to add a count
+accidentdata %>% group_by(HOUR) %>% mutate(DAY_WEEK = hours(HOUR)) %>% summarise(n = n()) 
+
 ```
 
 4.What is the number of accidents with at least one drunk driver (use variable DRUNK_DR)?

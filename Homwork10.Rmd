@@ -71,10 +71,23 @@ summary(drivers$PER_TYP)
 
 ```{r}
 
-#join.data <- drivers %>% left_join(accidentdata, by="STATE")
+join.data <- drivers %>% left_join(accidentdata, by="ST_CASE")
 
 ```
 
 
 7.Tally the number of accidents by day of the week (DAY_WEEK), hour of the day (HOUR) and gender (SEX). Visualize the results!
 
+```{r}
+
+join.data$DAY_WEEK <- as.factor(join.data$DAY_WEEK)
+join.data$HOUR.x <- as.factor(join.data$HOUR.x)
+join.data$SEX <- as.factor(join.data$SEX)
+summary(join.data$DAY_WEEK)
+summary(join.data$HOUR.x)
+summary(join.data$SEX)
+
+ggplot(join.data, aes(x = DAY_WEEK)) + geom_bar()
+ggplot(join.data, aes(x = HOUR.x)) + geom_bar()
+ggplot(join.data, aes(x = SEX)) + geom_bar()
+```

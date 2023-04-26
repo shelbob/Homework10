@@ -9,20 +9,14 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-1. Load accident data and plot latitude and longitude on a map
+Repository Link - https://github.com/shelbob/Homework10 
+
+1. Load accident data 
 
 ```{r}
 library(tidyverse)
-library(maps)
 accidentdata = read_csv("accident data.csv");
-#ggplot(accidentdata, aes(x=LONGITUD, y=LATITUDE)) + geom_point()
 
-states <- map_data("state")
-head(states)
-
-#states %>% ggplot(aes(x=long, y=lat)) + geom_path(aes(group=group)) + geom_point(aes(x=LONGITUD, y=LATITUDE), size=0.05, color='red', data=acc %>% filter(LONGITUDE<0, LLONGUDE>-180))
-
-#ggplot(map(aes(x=long, y=lat))) + geom_polygon(aes(group=group))  + Geom_point(accidentdata, aes(x=LONGITUD, y=LATITUDE))
 ```
 
 

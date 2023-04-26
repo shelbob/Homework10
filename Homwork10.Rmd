@@ -57,7 +57,24 @@ accidentdata %>% filter(DRUNK_DR >=1) %>% summarise(n = n())
 
 5.Connect to the person table. Identify drivers (PER_TYP == 1, see fars manual ) and subset on them.
 
+```{r}
+
+person <- read.csv("https://raw.githubusercontent.com/yumouqiu/DS202-Spring2023/main/Practice/data/fars2016/person.csv")
+str(person)
+person$PER_TYP <- as.factor(person$PER_TYP)
+
+drivers <- person %>% filter(PER_TYP == 1)
+summary(drivers$PER_TYP)
+```
+
 6.Join accident and driver table (work out which variable(s) to use)
+
+```{r}
+
+#join.data <- drivers %>% left_join(accidentdata, by="STATE")
+
+```
+
 
 7.Tally the number of accidents by day of the week (DAY_WEEK), hour of the day (HOUR) and gender (SEX). Visualize the results!
 
